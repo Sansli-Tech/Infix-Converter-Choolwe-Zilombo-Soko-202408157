@@ -3,8 +3,11 @@ The objective of this assignment is to develop a Java program that converts a gi
 
 Objectives:
 1)To understand expression notations (infix, postfix, prefix)
+
 2)To implement stack data structures in Java
+
 3)To apply operator precedence rules in expression evaluation
+
 4)To develop a working Java program for expression conversion
 
 Program Description:
