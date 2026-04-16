@@ -1,0 +1,30 @@
+Goal:
+Take an infix expression (e.g. A+B*C) and convert it to:
+
+Postfix → ABC*+
+Prefix → +A*BC
+
+STEPS:
+
+A. Input
+1.Ask user to enter an infix expression
+
+B. Convert Infix to Postfix
+
+2. Create an empty stack
+3. Scan expression left to right
+4. For each character:
+    If operand (A–Z, a–z, 0–9) → add to output
+    If ( → push to stack
+    If ) → pop until ( is found
+    If operator (+ - * / ^):
+    Pop operators with higher or equal precedence
+    Then push current operator
+5. Pop remaining operators
+C. Convert Infix → Prefix
+6. Reverse the infix expression
+7. Replace:
+    ( with )
+    ) with (
+8. Convert to postfix (same logic)
+9. Reverse result → gives prefix

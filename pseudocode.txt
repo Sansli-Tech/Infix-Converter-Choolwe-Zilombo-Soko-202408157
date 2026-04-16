@@ -1,0 +1,55 @@
+START
+
+FUNCTION precedence(op)
+    IF op == '+' OR '-'
+        RETURN 1
+    IF op == '*' OR '/'
+        RETURN 2
+    IF op == '^'
+        RETURN 3
+END FUNCTION
+
+FUNCTION infixToPostfix(expression)
+    stack ← empty
+    result ← ""
+
+    FOR each character ch in expression
+        IF ch is operand
+            result ← result + ch
+
+        ELSE IF ch == '('
+            PUSH ch to stack
+
+        ELSE IF ch == ')'
+            WHILE stack top ≠ '('
+                result ← result + POP stack
+            POP '('
+
+        ELSE (operator)
+            WHILE stack not empty AND precedence(ch) ≤ precedence(top)
+                result ← result + POP stack
+            PUSH ch
+
+    WHILE stack not empty
+        result ← result + POP stack
+
+    RETURN result
+END FUNCTION
+
+FUNCTION infixToPrefix(expression)
+    REVERSE expression
+    SWAP '(' and ')'
+    postfix ← infixToPostfix(expression)
+    RETURN REVERSE(postfix)
+END FUNCTION
+
+MAIN
+    INPUT expression
+    postfix ← infixToPostfix(expression)
+    prefix ← infixToPrefix(expression)
+
+    PRINT infix
+    PRINT postfix
+    PRINT prefix
+
+END
